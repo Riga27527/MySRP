@@ -76,6 +76,17 @@
       "dependencies": {},
       "url": "https://packages.unity.cn"
     },
+    "com.unity.render-pipelines.core": {
+      "version": "14.0.4",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
+    },
     "com.unity.services.core": {
       "version": "1.6.0",
       "depth": 1,
