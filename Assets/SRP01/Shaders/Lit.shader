@@ -34,6 +34,8 @@ Shader "CustomRP/Lit"
             #pragma shader_feature _PREMULTIPLY_ALPHA
             // 1. add multi_compile_instancing 
             #pragma multi_compile_instancing
+            #pragma multi_compile _ _DIRECTIONAL_PCF3 _DIRECTIONAL_PCF5 _DIRECTIONAL_PCF7
+            #pragma multi_compile _ _CASCADE_BLEND_SOFT _CASCADE_BLEND_DITHER
             #pragma vertex LitPassVertex
             #pragma fragment LitPassFragment
             #include "LitPass.hlsl"

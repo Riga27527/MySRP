@@ -12,6 +12,7 @@ struct Surface
     float smoothness;
 
     float3 viewDirection;
+    float dither;
 };
 
 #endif
