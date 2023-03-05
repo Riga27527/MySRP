@@ -13,6 +13,17 @@ public class ShadowSettings
     public struct Directional
     {
         public TextureSize atlasSize;
+
+        [Range(1, 4)]
+        public int cascadeCount;
+
+        [Range(0f, 1f)]
+        public float cascadeRatio1, cascadeRatio2, cascadeRatio3;
+
+        [Range(0.001f, 1f)]
+        public float cascadeFade;
+        
+        public Vector3 CascadeRatios => new Vector3(cascadeRatio1, cascadeRatio2, cascadeRatio3);
     }
 
     [Min(0f)]
@@ -20,9 +31,15 @@ public class ShadowSettings
     
     public Directional directional = new Directional
     {
-        atlasSize = TextureSize._1024
+        atlasSize = TextureSize._1024,
+        cascadeCount = 4,
+        cascadeRatio1 = 0.1f,
+        cascadeRatio2 = 0.25f,
+        cascadeRatio3 = 0.5f,
+        cascadeFade = 0.1f
     };
 
-
+    [Range(0.001f, 1f)]
+    public float distanceFade = 0.1f;
 }
 
