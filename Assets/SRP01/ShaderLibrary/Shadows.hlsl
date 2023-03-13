@@ -108,6 +108,10 @@ ShadowData GetShadowData(Surface surface)
 
 float GetDirectionalShadowAttenuation(DirectionalShadowData data, ShadowData shadowData, Surface surfaceWS)
 {
+#if !defined(_RECEIVE_SHADOWS)
+    return 1.0;
+#endif
+
     if(data.strength <= 0.0)
         return 1.0;
     

@@ -23,8 +23,26 @@ public class CustomShaderGUI : ShaderGUI {
 
     bool showPresets;
 
+    enum ShadowMode
+    {
+        On, Clip, Dither, Off
+    }
+
+    ShadowMode shadows
+    {
+        set
+        {
+            if(SetProperty("_Shadows", (float)value))
+            {
+                SetKeyWord("_SHADOWS_CLIP", value == ShadowMode.Clip);
+                SetKeyWord("_SHADOWS_DITHER", value == ShadowMode.Dither);
+            }
+        }
+    }
+
     public override void OnGUI(MaterialEditor materialEditor, MaterialProperty[] properties) 
     {
+        EditorGUI.BeginChangeCheck();
         base.OnGUI(materialEditor, properties);
         this.editor = materialEditor;
         this.materials = materialEditor.targets;
@@ -37,6 +55,24 @@ public class CustomShaderGUI : ShaderGUI {
             ClipPreset();
             FadePreset();
             TransparentPreset();
+        }
+        if(EditorGUI.EndChangeCheck())
+        {
+            SetShadowCasterPass();
+        }
+    }
+
+    void SetShadowCasterPass()
+    {
+        MaterialProperty shadows = FindProperty("_Shadows", properties, false);
+        if(shadows == null || shadows.hasMixedValue)
+        {
+            return;
+        }
+        bool enabled = shadows.floatValue < (float)ShadowMode.Off;
+        foreach(Material m in materials)
+        {
+            m.SetShaderPassEnabled("ShadowCaster", enabled);
         }
     }
 
