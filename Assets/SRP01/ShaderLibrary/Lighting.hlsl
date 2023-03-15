@@ -11,7 +11,7 @@ float3 GetLighting(Surface surface, BRDF brdf, Light light)
     return IncomingLight(surface, light) * DirectBRDF(surface, brdf, light);
 }
 
-float3 GetLighting(Surface surface, BRDF brdf)
+float3 GetLighting(Surface surface, BRDF brdf, GI gi)
 {
     ShadowData shadowData = GetShadowData(surface);
     float3 color = 0.0;
@@ -20,7 +20,8 @@ float3 GetLighting(Surface surface, BRDF brdf)
         Light light = GetDirectionalLight(i, surface, shadowData);
         color += GetLighting(surface, brdf, light);
     }
-    return color;
+    // return color;
+    return gi.diffuse;
 }
 
 
