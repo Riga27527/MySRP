@@ -55,7 +55,7 @@ float4 UnlitPassFragment(Varyings input) : SV_TARGET
     
 #if defined(_CLIPPING)
     float cutoff_threshold = GetCutoff(input.baseUV);
-    clip(color.a - cutoff_threshold);
+    clip(base.a - cutoff_threshold);
 #endif
 
     return base;

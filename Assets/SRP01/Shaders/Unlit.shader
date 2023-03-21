@@ -2,7 +2,7 @@ Shader "CustomRP/Unlit"
 {
     Properties
     {
-        _BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        [HDR] _BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _BaseMap("Texture", 2D) = "white" {}
         
         [Enum(UnityEngine.Rendering.BlendMode)] _SrcBlend("Src Blend", Float) = 1
