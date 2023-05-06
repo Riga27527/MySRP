@@ -14,6 +14,10 @@
 #define UNITY_PREV_MATRIX_M unity_PreObjectToWorld
 #define UNITY_PREV_MATRIX_I_M unity_PreWorldToObject
 
+#if defined(_SHADOW_MASK_ALWAYS) || defined(_SHADOW_MASK_DISTANCE)
+    #define SHADOWS_SHADOWMASK
+#endif
+
 // 2. import UnityInstancing.hlsl
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/UnityInstancing.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/SpaceTransforms.hlsl"

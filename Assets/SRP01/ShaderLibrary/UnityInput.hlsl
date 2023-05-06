@@ -21,6 +21,8 @@ float4 unity_ProbeVolumeParams;
 float4x4 unity_ProbeVolumeWorldToObject;
 float4 unity_ProbeVolumeSizeInv;
 float4 unity_ProbeVolumeMin;
+
+float4 unity_ProbesOcclusion;
 CBUFFER_END
 
 float4x4 unity_MatrixV;
